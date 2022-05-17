@@ -1,22 +1,18 @@
 import NextAuth from "next-auth";
-import clientPromise from "./lib/mongodb";
 import connectDB from "./lib/connectDB";
 import CredentialsProvider from "next-auth/providers/credentials";
 import User from "../../models/userModel";
 import bcrypt from "bcrypt";
-import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 connectDB();
 
 export default NextAuth({
   session: {
     strategy: "jwt",
   },
-  adapter: MongoDBAdapter(clientPromise),
   providers: [
     CredentialsProvider({
       name: "Credentials",
       async authorize(credentials, req) {
-        console.log(credentials.email, credentials.password, "nextauthhting");
         const email = credentials.email;
         const password = credentials.password;
         const user = await User.findOne({ email });

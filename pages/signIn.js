@@ -50,15 +50,6 @@ export default function signInPage({ csrfToken, providers }) {
   };
   return (
     <>
-      {session ? <p>session</p> : "no session"}
-      {/* <form method="post" action="api/auth/signin/email">
-        <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
-        <label>
-          Email address
-          <input type="email" id="email" name="email" />
-        </label>
-        <button type="submit">Sign in with email</button>
-      </form> */}
       <form action="">
         <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
         <label>
